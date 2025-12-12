@@ -1,31 +1,14 @@
-function findElement(query) {
-    if (!query)
-        return;
-    let element = null;
-    if (query.startsWith("#")) {
-        const id = query.substring(1);
-        element = document.getElementById(id);
-    }
-    if (!element) {
-        element = document.querySelector(query);
-    }
-    return element;
-}
 function storeInput(element) {
-    const input = element.textContent;
-    return input;
+    const inputElement = element;
+    return inputElement.value.trim();
 }
 // clears input after user clicks enter
-function clearInput(inputElement) {
-    inputElement.textContent = "";
+function clearInput(element) {
+    const inputElement = element;
+    inputElement.value = "";
 }
-function handleInput(event, query) {
+function handleInput(event, inputElement) {
     event.preventDefault();
-    if (!query)
-        return;
-    const inputElement = findElement(query);
-    if (!inputElement)
-        return;
     const inputValue = storeInput(inputElement);
     if (!inputValue)
         return;

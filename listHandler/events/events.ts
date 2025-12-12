@@ -1,10 +1,19 @@
 import handleInput from "../addInput/handleInput"; // stores input and clears it
 import handle_ul from "../addListToHtml/addListToHtml"; // adds new list-item to list
+import findElement from "../abstract/functions/findElement/findElement";
 
-const formInput =
-  (document.querySelector("#taskInput") as HTMLInputElement) || null;
+const inputElement = (findElement("#taskInput") as HTMLInputElement) || null,
+  listUl = (document.querySelector("#todoList") as HTMLElement) || null,
+  UlElement = (findElement("#todoList") as HTMLUListElement) || null,
+  form = (findElement("taskForm") as HTMLFormElement) || null;
 
-const listUl = (document.querySelector("#todoList") as HTMLElement) || null;
+function storeInput(element: HTMLElement): string {
+  const inputElement = element as HTMLInputElement;
+  return inputElement.value.trim();
+}
 
-const taskForm =
-  (document.getElementById("taskForm") as HTMLFormElement) || null;
+// clears input after user clicks enter
+function clearInput(element: HTMLElement): void {
+  const inputElement = element as HTMLInputElement;
+  inputElement.value = "";
+}

@@ -1,32 +1,18 @@
-// adds id to child to later allow for manipulation
-function newId() {
-    const id = crypto.randomUUID();
-    return id;
-}
-// create element and add text to it
-function createElement(typeEl) {
-    const childElement = document.createElement(`${typeEl}`);
-    return childElement;
-}
-// find parent and append child to parent
-function append(appender, child) {
-    const parent = document.querySelector(`${appender}`);
-    parent?.appendChild(child);
-}
-// adds neccessary values to <li>
-function handle_listItem(element, text) {
-    const id = newId();
+import newId from "../abstract/functions/newId/newId";
+// create element and add required promps to it
+function createListElement(text) {
+    const element = document.createElement("li");
     element.textContent = text;
-    element.id = id;
+    element.id = newId();
     element.className = "todo_li";
+    return element;
 }
-function handle_ul(parent, child, text) {
-    if (!child || !parent || text)
+function appendListItem(parent, text) {
+    if (!parent || !text)
         return;
-    const li = createElement(child);
+    const li = createListElement(text);
     if (!li)
         return;
-    handle_listItem(li, text);
-    append(parent, li);
+    parent.append(li);
 }
-export default handle_ul;
+export default appendListItem;
