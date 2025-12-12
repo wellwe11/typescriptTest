@@ -1,4 +1,4 @@
-import newId from "../abstract/functions/newId/newId";
+import newId from "../abstract/functions/newId/newId.js";
 
 // create element and add required promps to it
 function createListElement(text: string): HTMLLIElement {
